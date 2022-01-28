@@ -38,3 +38,4 @@ jobs:
           aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
           aws_bucket: peak-platformer-test
           source_dir: 'build/web'
+          destination_dir: ''
