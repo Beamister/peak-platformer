@@ -1,0 +1,6 @@
+name: "godot-ci export"
+on: push
+
+env:
+  GODOT_VERSION: 3.3.4
+  EXPORT_NAME: peak-platformer
