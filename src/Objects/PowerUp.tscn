@@ -101,17 +101,17 @@ tracks/3/keys = {
 }
 
 [node name="PowerUp" type="Node2D"]
-scale = Vector2( 1.08402, 1.08402 )
+scale = Vector2( 1.09886, 1.09886 )
 script = ExtResource( 2 )
 
 [node name="PowerUp" type="Sprite" parent="."]
-position = Vector2( 0, -49.898 )
+position = Vector2( 0, -49.9999 )
 texture = ExtResource( 1 )
 
 [node name="Area2D" type="Area2D" parent="."]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-position = Vector2( 0, -49.898 )
+position = Vector2( 0, -49.9999 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
