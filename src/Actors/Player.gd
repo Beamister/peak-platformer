@@ -5,9 +5,9 @@ export var stomp_impulse: = 600.0
 
 onready var jump_audio_player: AudioStreamPlayer = $JumpAudioStreamPlayer
 onready var death_audio_player: AudioStreamPlayer = $DeathAudioStreamPlayer
+onready var power_up_timer: Timer = $PowerUpTimer
 
 onready var base_speed: Vector2 = speed
-var power_up_time_remaining: float = 0
 
 
 func _on_EnemyDetector_area_entered(area: Area2D) -> void:
@@ -26,7 +26,6 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_released("jump"):
 		interupt_jump()
 	move()
-	handle_power_ups(delta)
 
 
 func move() -> void:
@@ -43,19 +42,10 @@ func move_left_or_right(strength: float) -> void:
 func jump(strength) -> void:
 	_velocity.y = -speed.y * strength
 	jump_audio_player.play()
-	print(_velocity.y)
 
 
 func interupt_jump() -> void:
 	_velocity.y = 0
-
-
-func handle_power_ups(delta: float) -> void:
-	if power_up_time_remaining > 0:
-		power_up_time_remaining -= delta
-	if power_up_time_remaining < 0:
-		power_up_time_remaining = 0
-		power_down()
 
 
 func calculate_stomp_velocity(linear_velocity: Vector2, stomp_impulse: float) -> Vector2:
@@ -65,13 +55,12 @@ func calculate_stomp_velocity(linear_velocity: Vector2, stomp_impulse: float) ->
 
 func power_up(power_up_strength: float, power_up_time):
 	speed *= power_up_strength
-	power_up_time_remaining = power_up_time
-	print("Powering up")
+	power_up_timer.wait_time = power_up_time
+	power_up_timer.start()
 
 
 func power_down():
 	speed = base_speed
-	print("Powering down")
 
 
 func die() -> void:
@@ -82,3 +71,7 @@ func die() -> void:
 	yield(death_audio_player, "finished")
 	get_tree().reload_current_scene()
 	get_tree().paused = false
+
+
+func _on_PowerUpTimer_timeout() -> void:
+	power_down()
