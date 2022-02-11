@@ -1,17 +1,15 @@
 extends StaticBody2D
 
-signal switch_toggled(switch_id)
- 
-export var switch_id: int = 0 setget , get_switch_id
 
 var open: bool = false
 
+onready var toggle_controller = $ToggleController
+export var circuit_id: int = 0
 
-func get_switch_id() -> int:
-	return switch_id
-
+func _ready() -> void:
+	toggle_controller.circuit_id = circuit_id
 
 func consume_data() -> void:
 	if open == false:
+		toggle_controller.set_state(true)
 		open = true
-		emit_signal("switch_toggled", switch_id)

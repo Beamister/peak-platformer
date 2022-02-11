@@ -7,6 +7,10 @@ onready var anim_player: AnimationPlayer = $AnimationPlayer
 export var next_scene: PackedScene
 
 
+func _process(delta: float) -> void:
+	if Input.is_action_pressed("skip_level"):
+		teleport()
+
 func _on_body_entered(body: PhysicsBody2D):
 	teleport()
 
