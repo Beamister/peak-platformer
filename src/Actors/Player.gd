@@ -2,13 +2,17 @@ extends Actor
 
 
 export var stomp_impulse: = 600.0
+export var max_y_head_movement: float = 15
+export var max_x_head_movement: float = 5
+export var head_movement_factor: float = 10
 
 onready var jump_audio_player: AudioStreamPlayer = $JumpAudioStreamPlayer
 onready var death_audio_player: AudioStreamPlayer = $DeathAudioStreamPlayer
 onready var power_up_timer: Timer = $PowerUpTimer
-
+onready var head: CollisionShape2D = $HeadCollisionShape
 onready var base_speed: Vector2 = speed
 
+onready var base_head_position: Vector2 = head.position
 
 func _on_EnemyDetector_area_entered(area: Area2D) -> void:
 	_velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
@@ -16,7 +20,7 @@ func _on_EnemyDetector_area_entered(area: Area2D) -> void:
 
 func _on_EnemyDetector_body_entered(body: PhysicsBody2D) -> void:
 	die()
-	
+
 
 func _physics_process(delta: float) -> void:
 	var move_left_or_right_strength = Input.get_action_strength("move_right") - Input.get_action_strength("move_left")
@@ -26,6 +30,7 @@ func _physics_process(delta: float) -> void:
 	elif Input.is_action_just_released("jump"):
 		interupt_jump()
 	move()
+	update_head_position()
 
 
 func move() -> void:
@@ -62,6 +67,13 @@ func power_up(power_up_strength: float, power_up_time):
 func power_down():
 	speed = base_speed
 
+
+func update_head_position():
+	print(_velocity)
+	var head_x_offset: float = -1 * clamp(_velocity.x / head_movement_factor, -max_x_head_movement, max_x_head_movement)
+	var head_y_offset: float = -1 * clamp(_velocity.y / head_movement_factor, -max_y_head_movement, max_y_head_movement)
+	var head_offset_vector: Vector2 = Vector2(head_x_offset, head_y_offset)
+	head.position = base_head_position + head_offset_vector
 
 func die() -> void:
 	PlayerData.deaths += 1

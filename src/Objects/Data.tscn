@@ -24,6 +24,7 @@ tracks/0/keys = {
 
 [node name="Data" type="Area2D"]
 rotation = 5.72836
+z_index = -5
 collision_layer = 16
 collision_mask = 15
 script = ExtResource( 2 )
