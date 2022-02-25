@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://src/Actors/Enemy.gd" type="Script" id=1]
+[ext_resource path="res://src/Actors/BlobEnemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/enemy.png" type="Texture" id=2]
 [ext_resource path="res://assets/audio/enemy_impact.ogg" type="AudioStream" id=3]
 
@@ -10,7 +10,7 @@ extents = Vector2( 46, 30.75 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 56, 11.5 )
 
-[node name="Enemy" type="KinematicBody2D"]
+[node name="BlobEnemy" type="KinematicBody2D"]
 collision_layer = 2
 collision_mask = 12
 script = ExtResource( 1 )

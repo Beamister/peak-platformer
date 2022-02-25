@@ -69,7 +69,6 @@ func power_down():
 
 
 func update_head_position():
-	print(_velocity)
 	var head_x_offset: float = -1 * clamp(_velocity.x / head_movement_factor, -max_x_head_movement, max_x_head_movement)
 	var head_y_offset: float = -1 * clamp(_velocity.y / head_movement_factor, -max_y_head_movement, max_y_head_movement)
 	var head_offset_vector: Vector2 = Vector2(head_x_offset, head_y_offset)

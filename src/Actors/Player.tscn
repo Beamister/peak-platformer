@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/Square.png" type="Texture" id=1]
 [ext_resource path="res://src/Actors/Player.gd" type="Script" id=2]
@@ -13,9 +13,12 @@ extents = Vector2( 49.9981, 49.4981 )
 extents = Vector2( 24, 24 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 49.9981, 47.3241 )
+extents = Vector2( 49.9981, 44.8259 )
 
-[node name="Player" type="KinematicBody2D"]
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 23.9648, 26.5509 )
+
+[node name="Player" type="KinematicBody2D" groups=["Players"]]
 position = Vector2( 0, -1 )
 scale = Vector2( 0.580022, 0.580022 )
 collision_mask = 12
@@ -72,9 +75,13 @@ collision_layer = 0
 collision_mask = 2
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
-position = Vector2( 0, -50 )
+[node name="BodyCollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+position = Vector2( 3.8147e-06, -55.1703 )
 shape = SubResource( 2 )
+
+[node name="HeadCollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+position = Vector2( 0.172219, -126.547 )
+shape = SubResource( 4 )
 
 [node name="JumpAudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 3 )

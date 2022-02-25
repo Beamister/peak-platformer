@@ -24,6 +24,7 @@ func _physics_process(delta: float) -> void:
 
 
 func die():
+	PlayerData.score += score
 	audio_player.play()
 	visible = false
 	stomp_area.monitoring = false
