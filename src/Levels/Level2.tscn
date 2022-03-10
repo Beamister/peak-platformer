@@ -7,7 +7,7 @@
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/UserInterface/EndScreen.tscn" type="PackedScene" id=8]
+[ext_resource path="res://src/Levels/Level3.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Objects/Switch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/Levels/Level.gd" type="Script" id=10]
 [ext_resource path="res://src/Objects/DataSpawner.tscn" type="PackedScene" id=11]
@@ -53,10 +53,12 @@ position = Vector2( 480.679, 783.043 )
 [node name="DataConsumer" parent="Controllers" instance=ExtResource( 12 )]
 position = Vector2( 2200, 400 )
 circuit_id = 2
+bottom_input = true
 
 [node name="DataConsumer2" parent="Controllers" instance=ExtResource( 12 )]
 position = Vector2( 2280, 880 )
 circuit_id = 2
+top_input = true
 
 [node name="Switch" parent="Controllers" instance=ExtResource( 9 )]
 position = Vector2( 1960, 800 )
@@ -64,8 +66,8 @@ circuit_id = 1
 
 [node name="DataConsumer3" parent="Controllers" instance=ExtResource( 12 )]
 position = Vector2( 2120, 880 )
+corrupted = true
 circuit_id = 2
-wait_time = 5.0
 
 [node name="ControlListeners" type="Node" parent="."]
 

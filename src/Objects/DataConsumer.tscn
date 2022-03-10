@@ -24,6 +24,5 @@ shape = SubResource( 1 )
 
 [node name="CorruptedDataTimer" type="Timer" parent="."]
 wait_time = 2.0
-autostart = true
 
 [connection signal="timeout" from="CorruptedDataTimer" to="." method="_on_CorruptedDataTimer_timeout"]

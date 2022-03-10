@@ -32,11 +32,12 @@ anchor_right = 0.5
 margin_left = -184.0
 margin_top = 148.0
 margin_right = 184.0
-margin_bottom = 241.0
+margin_bottom = 256.0
 text = "Congratulations, you completed the game!
 
 Score: %s
-Deaths: %s"
+Deaths: %s
+Ghosts Freed %s/%s"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false

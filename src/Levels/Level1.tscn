@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=2]
@@ -14,6 +14,7 @@
 [ext_resource path="res://src/Objects/DataConsumer.tscn" type="PackedScene" id=12]
 [ext_resource path="res://src/Objects/DataSpawner.tscn" type="PackedScene" id=13]
 [ext_resource path="res://src/Levels/Level.gd" type="Script" id=14]
+[ext_resource path="res://src/Objects/Ghost.tscn" type="PackedScene" id=15]
 
 [node name="Level1" type="Node2D" groups=["Levels"]]
 script = ExtResource( 14 )
@@ -80,6 +81,7 @@ position = Vector2( 4576, 792 )
 [node name="DataConsumer" parent="Controllers" instance=ExtResource( 12 )]
 position = Vector2( 5080, 800 )
 circuit_id = 2
+left_input = true
 
 [node name="Switch" parent="Controllers" instance=ExtResource( 9 )]
 position = Vector2( 2640, 800 )
@@ -121,3 +123,6 @@ position = Vector2( 3660, 450 )
 
 [node name="Coin9" parent="." instance=ExtResource( 5 )]
 position = Vector2( 3550, 470 )
+
+[node name="Ghost" parent="." instance=ExtResource( 15 )]
+position = Vector2( 1890, 720 )
