@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://src/UserInterface/QuitButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UserInterface/PlayButton.tscn" type="PackedScene" id=2]
@@ -10,6 +10,12 @@
 [ext_resource path="res://assets/shadedDark14.png" type="Texture" id=8]
 [ext_resource path="res://assets/shadedDark24.png" type="Texture" id=9]
 [ext_resource path="res://assets/shadedDark25.png" type="Texture" id=10]
+[ext_resource path="res://assets/shadedDark30.png" type="Texture" id=11]
+[ext_resource path="res://src/UserInterface/FullScreenButton.gd" type="Script" id=12]
+[ext_resource path="res://src/UserInterface/PauseButton.gd" type="Script" id=13]
+[ext_resource path="res://src/UserInterface/RightButton.gd" type="Script" id=14]
+[ext_resource path="res://src/UserInterface/LeftButton.gd" type="Script" id=15]
+[ext_resource path="res://src/UserInterface/UpButton.gd" type="Script" id=16]
 
 [sub_resource type="Animation" id=1]
 resource_name = "death"
@@ -124,64 +130,78 @@ __meta__ = {
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/death = SubResource( 1 )
 
-[node name="Container3" type="VBoxContainer" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_right = 40.0
+[node name="FullScreenButton" type="TextureButton" parent="."]
+margin_left = 90.0
+margin_top = 10.0
+margin_right = 138.0
+margin_bottom = 58.0
+texture_normal = ExtResource( 11 )
+expand = true
+flip_h = true
+script = ExtResource( 12 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="RightButton" type="TouchScreenButton" parent="Container3"]
-position = Vector2( 60, -60 )
-scale = Vector2( 0.4, 0.4 )
-normal = ExtResource( 10 )
-action = "move_right"
-visibility_mode = 1
-
-[node name="Container2" type="VBoxContainer" parent="."]
-anchor_top = 1.0
-anchor_bottom = 1.0
-margin_right = 40.0
+[node name="PauseButton" type="TextureButton" parent="."]
+margin_left = 20.0
+margin_top = 10.0
+margin_right = 68.0
+margin_bottom = 58.0
+texture_normal = ExtResource( 8 )
+expand = true
+script = ExtResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeftButton" type="TouchScreenButton" parent="Container2"]
-position = Vector2( 20, -60 )
-scale = Vector2( 0.4, 0.4 )
-normal = ExtResource( 9 )
-action = "move_left"
-visibility_mode = 1
-
-[node name="Container" type="VBoxContainer" parent="."]
+[node name="UpButton" type="TextureButton" parent="."]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -40.0
-margin_top = -40.0
+margin_left = -100.0
+margin_top = -100.0
+margin_right = -20.0
+margin_bottom = -20.0
+action_mode = 0
+texture_normal = ExtResource( 7 )
+expand = true
+script = ExtResource( 16 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UpButton" type="TouchScreenButton" parent="Container"]
-position = Vector2( -20, -20 )
-scale = Vector2( 0.4, 0.4 )
-normal = ExtResource( 7 )
-action = "jump"
-visibility_mode = 1
+[node name="LeftButton" type="TextureButton" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 20.0
+margin_top = -100.0
+margin_right = 100.0
+margin_bottom = -20.0
+texture_normal = ExtResource( 9 )
+expand = true
+script = ExtResource( 15 )
 
-[node name="Container4" type="VBoxContainer" parent="."]
-margin_right = 40.0
-margin_bottom = 40.0
+[node name="RightButton" type="TextureButton" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 120.0
+margin_top = -100.0
+margin_right = 200.0
+margin_bottom = -20.0
+texture_normal = ExtResource( 10 )
+expand = true
+script = ExtResource( 14 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PauseButton" type="TouchScreenButton" parent="Container4"]
-position = Vector2( 10, 10 )
-scale = Vector2( 0.4, 0.4 )
-normal = ExtResource( 8 )
-action = "pause"
-visibility_mode = 1
+[connection signal="pressed" from="FullScreenButton" to="FullScreenButton" method="_on_Button_pressed"]
+[connection signal="pressed" from="PauseButton" to="PauseButton" method="_on_Button_pressed"]
+[connection signal="button_down" from="UpButton" to="UpButton" method="_on_Button_button_down"]
+[connection signal="button_up" from="UpButton" to="UpButton" method="_on_Button_button_up"]
+[connection signal="button_down" from="LeftButton" to="LeftButton" method="_on_Button_button_down"]
+[connection signal="button_up" from="LeftButton" to="LeftButton" method="_on_Button_button_up"]
+[connection signal="button_down" from="RightButton" to="RightButton" method="_on_Button_button_down"]
+[connection signal="button_up" from="RightButton" to="RightButton" method="_on_Button_button_up"]
