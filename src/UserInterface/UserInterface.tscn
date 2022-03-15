@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://src/UserInterface/QuitButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://src/UserInterface/PlayButton.tscn" type="PackedScene" id=2]
@@ -6,6 +6,10 @@
 [ext_resource path="res://src/UserInterface/UserInterface.gd" type="Script" id=4]
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=5]
 [ext_resource path="res://assets/pink shape.png" type="Texture" id=6]
+[ext_resource path="res://assets/shadedDark26.png" type="Texture" id=7]
+[ext_resource path="res://assets/shadedDark14.png" type="Texture" id=8]
+[ext_resource path="res://assets/shadedDark24.png" type="Texture" id=9]
+[ext_resource path="res://assets/shadedDark25.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=1]
 resource_name = "death"
@@ -119,3 +123,65 @@ __meta__ = {
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/death = SubResource( 1 )
+
+[node name="Container3" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightButton" type="TouchScreenButton" parent="Container3"]
+position = Vector2( 60, -60 )
+scale = Vector2( 0.4, 0.4 )
+normal = ExtResource( 10 )
+action = "move_right"
+visibility_mode = 1
+
+[node name="Container2" type="VBoxContainer" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_right = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="LeftButton" type="TouchScreenButton" parent="Container2"]
+position = Vector2( 20, -60 )
+scale = Vector2( 0.4, 0.4 )
+normal = ExtResource( 9 )
+action = "move_left"
+visibility_mode = 1
+
+[node name="Container" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpButton" type="TouchScreenButton" parent="Container"]
+position = Vector2( -20, -20 )
+scale = Vector2( 0.4, 0.4 )
+normal = ExtResource( 7 )
+action = "jump"
+visibility_mode = 1
+
+[node name="Container4" type="VBoxContainer" parent="."]
+margin_right = 40.0
+margin_bottom = 40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="PauseButton" type="TouchScreenButton" parent="Container4"]
+position = Vector2( 10, 10 )
+scale = Vector2( 0.4, 0.4 )
+normal = ExtResource( 8 )
+action = "pause"
+visibility_mode = 1
