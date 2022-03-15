@@ -155,23 +155,6 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="UpButton" type="TextureButton" parent="."]
-anchor_left = 1.0
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-margin_left = -100.0
-margin_top = -100.0
-margin_right = -20.0
-margin_bottom = -20.0
-action_mode = 0
-texture_normal = ExtResource( 7 )
-expand = true
-script = ExtResource( 16 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
 [node name="LeftButton" type="TextureButton" parent="."]
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -197,10 +180,26 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -40.0
+margin_top = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="UpButton" type="TouchScreenButton" parent="VBoxContainer"]
+position = Vector2( -60, -60 )
+normal = ExtResource( 7 )
+action = "jump"
+visibility_mode = 1
+script = ExtResource( 16 )
+
 [connection signal="pressed" from="FullScreenButton" to="FullScreenButton" method="_on_Button_pressed"]
 [connection signal="pressed" from="PauseButton" to="PauseButton" method="_on_Button_pressed"]
-[connection signal="button_down" from="UpButton" to="UpButton" method="_on_Button_button_down"]
-[connection signal="button_up" from="UpButton" to="UpButton" method="_on_Button_button_up"]
 [connection signal="button_down" from="LeftButton" to="LeftButton" method="_on_Button_button_down"]
 [connection signal="button_up" from="LeftButton" to="LeftButton" method="_on_Button_button_up"]
 [connection signal="button_down" from="RightButton" to="RightButton" method="_on_Button_button_down"]
