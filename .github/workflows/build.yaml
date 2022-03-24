@@ -23,7 +23,6 @@ jobs:
       - name: Web Build
         run: |
           mkdir -v -p build/web
-          ls -la
           godot -v --export "HTML5" build/web/index.html
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
@@ -39,3 +38,37 @@ jobs:
           aws_bucket: peak-platformer-test
           source_dir: 'build/web'
           destination_dir: ''
+
+  export-android:
+    name: Android Export
+    runs-on: ubuntu-latest
+    container:
+      image: barichello/godot-ci:3.4.2
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        with:
+          lfs: true
+      - name: Setup
+        run: |
+          mkdir -v -p ~/.local/share/godot/templates
+          mv /root/.local/share/godot/templates/${GODOT_VERSION}.stable ~/.local/share/godot/templates/${GODOT_VERSION}.stable
+      - name: App Build
+        run: |
+          mkdir -v -p build/android
+          cd ${EXPORT_NAME}
+          godot -v --export-debug "Android Debug" ../build/android/${EXPORT_NAME}-debug.apk
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v1
+        with:
+          name: app
+          path: build/andorid
+      - uses: shallwefootball/s3-upload-action@master
+        name: Upload S3
+        id: S3
+        with:
+          aws_key_id: ${{ secrets.AWS_SECRET_ACCESS_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY}}
+          aws_bucket: peak-platformer-test
+          source_dir: 'build/web'
+          destination_dir: 'app'
