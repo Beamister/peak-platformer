@@ -36,7 +36,6 @@ func avoid_walls() -> void:
 			var max_ray_length: float = (_collision_detector.cast_to - _collision_detector.position).length()
 			var strength: float = 1 - (ray_length / max_ray_length)
 			var avoidance_direction: Vector2 = _collision_detector.cast_to.normalized()
-			var collider = _collision_detector.get_collider()
 			_velocity -= avoidance_direction * strength * avoidance_strength
 
 

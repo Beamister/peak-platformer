@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/Actors/ChaserEnemy.gd" type="Script" id=1]
 [ext_resource path="res://assets/audio/enemy_impact.ogg" type="AudioStream" id=2]
@@ -9,7 +9,36 @@ extents = Vector2( 20, 20 )
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 15, 2 )
 
+[sub_resource type="Animation" id=3]
+resource_name = "flying"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("ColorRect:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.5 ),
+"transitions": PoolRealArray( 1, 1 ),
+"update": 0,
+"values": [ Color( 1, 0.858824, 0.129412, 1 ), Color( 1, 0.235294, 0.509804, 1 ) ]
+}
+
 [node name="ChaserEnemy" type="KinematicBody2D"]
+scale = Vector2( 1.08893, 1.08893 )
 collision_layer = 2
 collision_mask = 14
 script = ExtResource( 1 )
@@ -26,7 +55,7 @@ margin_left = -20.0
 margin_top = -20.0
 margin_right = 20.0
 margin_bottom = 20.0
-color = Color( 1, 0.858824, 0.129412, 1 )
+color = Color( 1, 0.304297, 0.467708, 1 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -103,5 +132,9 @@ enabled = true
 cast_to = Vector2( 10, 0 )
 collision_mask = 14
 collide_with_areas = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "flying"
+anims/flying = SubResource( 3 )
 
 [connection signal="body_entered" from="StompDetector" to="." method="_on_StompDetector_body_entered"]

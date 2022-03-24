@@ -13,7 +13,7 @@ extents = Vector2( 49.9981, 49.4981 )
 extents = Vector2( 24, 24 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 49.9981, 44.8259 )
+extents = Vector2( 52, 47 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 23.9648, 26.5509 )
@@ -76,7 +76,7 @@ collision_mask = 2
 monitorable = false
 
 [node name="BodyCollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
-position = Vector2( 3.8147e-06, -55.1703 )
+position = Vector2( 0, -53.5 )
 shape = SubResource( 2 )
 
 [node name="HeadCollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
