@@ -11,7 +11,7 @@ var _velocity: = Vector2.ZERO
 
 
 func _physics_process(delta: float) -> void:
-	_velocity.y += gravity * delta
-	
+    _velocity.y += gravity * delta
+    
 func set_velocity(new_velocity: Vector2) -> void:
-	_velocity = new_velocity
+    _velocity = new_velocity

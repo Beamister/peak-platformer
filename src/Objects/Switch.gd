@@ -9,14 +9,14 @@ export var circuit_id: int = 0
 
 
 func _ready() -> void:
-	# Set default
-	open = false
-	toggle_controller.circuit_id = circuit_id
+    # Set default
+    open = false
+    toggle_controller.circuit_id = circuit_id
 
 
 func _on_PlayerDetector_body_entered(body: Node) -> void:
-	if body.name == "Player":
-		if open == false:
-			open = true
-			toggle_controller.set_state(true)
-			animation_player.play("pressed")
+    if body.name == "Player":
+        if open == false:
+            open = true
+            toggle_controller.set_state(true)
+            animation_player.play("pressed")

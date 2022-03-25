@@ -10,28 +10,28 @@ var ghosts_freed: int = 0
 var total_ghosts: int = 0
 
 func set_score(value: int) -> void:
-	score = value
-	emit_signal("score_updated")
+    score = value
+    emit_signal("score_updated")
 
 
 func set_deaths(value: int) -> void:
-	deaths = value
-	emit_signal("player_died")
+    deaths = value
+    emit_signal("player_died")
 
 
 func reset_game() -> void:
-	level_score = 0
-	score = 0
-	deaths = 0
-	ghosts_freed = 0
-	total_ghosts = 0
-	emit_signal("score_updated")
+    level_score = 0
+    score = 0
+    deaths = 0
+    ghosts_freed = 0
+    total_ghosts = 0
+    emit_signal("score_updated")
 
 
 func start_new_level() -> void:
-	level_score = score
+    level_score = score
 
 
 func reset_level() -> void:
-	score = level_score
-	emit_signal("score_updated")
+    score = level_score
+    emit_signal("score_updated")

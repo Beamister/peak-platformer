@@ -1,6 +1,6 @@
 name: "Build"
 on:
-	push:
+  push:
   workflow_dispatch:
 
 env:
@@ -58,8 +58,7 @@ jobs:
       - name: App Build
         run: |
           mkdir -v -p build/android
-          cd ${EXPORT_NAME}
-          godot -v --export-debug "Android Debug" ../build/android/${EXPORT_NAME}-debug.apk
+          godot -v --export-debug "Android Debug" build/android/${EXPORT_NAME}-debug.apk
       - name: Upload Artifact
         uses: actions/upload-artifact@v1
         with:
