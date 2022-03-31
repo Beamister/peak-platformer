@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://src/Actors/BlobEnemy.gd" type="Script" id=1]
+[ext_resource path="res://assets/enemy.png" type="Texture" id=2]
+[ext_resource path="res://assets/audio/enemy_impact.ogg" type="AudioStream" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 54, 42.25 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 30, 5.73011 )
+
+[node name="BlobEnemy" type="KinematicBody2D"]
+scale = Vector2( 1.1, 1.1 )
+collision_layer = 2
+collision_mask = 12
+script = ExtResource( 1 )
+
+[node name="VisibilityEnabler2D" type="VisibilityEnabler2D" parent="."]
+position = Vector2( 0, -46 )
+scale = Vector2( 5.6, 4.8 )
+process_parent = true
+physics_process_parent = true
+
+[node name="Enemy" type="Sprite" parent="."]
+position = Vector2( 0, -47 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 0, -42.75 )
+shape = SubResource( 1 )
+
+[node name="StompDetector" type="Area2D" parent="."]
+collision_layer = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StompDetector"]
+modulate = Color( 0, 0.392157, 1, 1 )
+position = Vector2( 0, -92.4517 )
+shape = SubResource( 2 )
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 3 )
+
+[connection signal="body_entered" from="StompDetector" to="." method="_on_StompDetector_body_entered"]

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://src/Utils/ToggleController.gd" type="Script" id=1]
+
+[node name="ToggleController" type="Node" groups=["Toggles"]]
+script = ExtResource( 1 )

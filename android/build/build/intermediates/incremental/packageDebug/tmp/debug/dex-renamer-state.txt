@@ -1,0 +1,4 @@
+#Thu Mar 31 14:21:19 BST 2022
+base.0=/Users/lukebeamish/Documents/Game Development/Games/Peak Platformer/android/build/build/intermediates/dex/debug/mergeDexDebug/classes.dex
+renamed.0=classes.dex
+path.0=classes.dex
