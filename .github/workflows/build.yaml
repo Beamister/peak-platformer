@@ -65,7 +65,7 @@ jobs:
         uses: actions/upload-artifact@v1
         with:
           name: app
-          path: build/andorid
+          path: build/android
       - uses: shallwefootball/s3-upload-action@master
         name: Upload S3
         id: S3
