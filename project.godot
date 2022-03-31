@@ -27,7 +27,7 @@ _global_script_classes=[ {
 "base": "",
 "class": "GitAPI",
 "language": "NativeScript",
-"path": "res://addons/godot-git-plugin/git_api.gdns"
+"path": "res://android/build/build/intermediates/merged_assets/debug/out/addons/godot-git-plugin/git_api.gdns"
 }, {
 "base": "KinematicBody2D",
 "class": "Switch",
@@ -54,7 +54,7 @@ PlayerData="*res://src/Autoload/PlayerData.tscn"
 
 [gdnative]
 
-singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib" ]
+singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib", "res://android/build/assets/addons/godot-git-plugin/git_api.gdnlib", "res://android/build/build/intermediates/merged_assets/debug/out/addons/godot-git-plugin/git_api.gdnlib" ]
 
 [global]
 
