@@ -26,11 +26,12 @@ jobs:
         run: |
           mkdir -v -p build/web
           godot -v --export "HTML5" build/web/index.html
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: web
-          path: build/web
+      # Commented out to avoid hitting storage limits
+      # - name: Upload Artifact
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: web
+      #     path: build/web
       - uses: shallwefootball/s3-upload-action@master
         name: Upload S3
         id: S3
@@ -61,11 +62,12 @@ jobs:
         run: |
           mkdir -v -p build/android
           godot -v --export-debug "Android Debug" build/android/${EXPORT_NAME}-debug.apk
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v1
-        with:
-          name: app
-          path: build/android
+      # Commented out to avoid hitting storage limits
+      # - name: Upload Artifact
+      #   uses: actions/upload-artifact@v1
+      #   with:
+      #     name: app
+      #     path: build/android
       - uses: shallwefootball/s3-upload-action@master
         name: Upload S3
         id: S3
