@@ -156,39 +156,42 @@ __meta__ = {
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 follow_viewport_scale = 300.0
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="CanvasLayer"]
+[node name="Control" type="Control" parent="CanvasLayer"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_right = 40.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer2"]
-position = Vector2( 20, -100 )
+[node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer/Control"]
+position = Vector2( 60, -120 )
 normal = ExtResource( 9 )
 action = "move_left"
 script = ExtResource( 14 )
 
-[node name="RightButton" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer2"]
-position = Vector2( 120, -100 )
-normal = ExtResource( 10 )
-action = "move_right"
-script = ExtResource( 14 )
-
-[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer"]
-anchor_left = 1.0
+[node name="Control2" type="Control" parent="CanvasLayer"]
 anchor_top = 1.0
-anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -40.0
-margin_top = -40.0
+margin_left = 200.0
+margin_right = 200.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="RightButton" type="TouchScreenButton" parent="CanvasLayer/Control2"]
+position = Vector2( 0, -120 )
+normal = ExtResource( 10 )
+action = "move_right"
+script = ExtResource( 14 )
+
+[node name="VBoxContainer" type="Control" parent="CanvasLayer"]
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+
 [node name="UpButton" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer"]
-position = Vector2( -60, -60 )
+position = Vector2( -140, -120 )
 normal = ExtResource( 7 )
 action = "jump"
 script = ExtResource( 14 )
