@@ -52,6 +52,12 @@ config/icon="res://icon.png"
 
 PlayerData="*res://src/Autoload/PlayerData.tscn"
 
+[display]
+
+window/dpi/allow_hidpi=true
+window/stretch/mode="viewport"
+window/stretch/aspect="keep_height"
+
 [gdnative]
 
 singletons=[ "res://addons/godot-git-plugin/git_api.gdnlib", "res://android/build/assets/addons/godot-git-plugin/git_api.gdnlib", "res://android/build/build/intermediates/merged_assets/debug/out/addons/godot-git-plugin/git_api.gdnlib" ]
