@@ -164,7 +164,7 @@ __meta__ = {
 }
 
 [node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer/Control"]
-position = Vector2( 160, -200 )
+position = Vector2( 100, -200 )
 normal = ExtResource( 9 )
 action = "move_left"
 visibility_mode = 1
