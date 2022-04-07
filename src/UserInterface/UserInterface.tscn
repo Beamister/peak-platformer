@@ -129,10 +129,10 @@ __meta__ = {
 anims/death = SubResource( 1 )
 
 [node name="FullScreenButton" type="TextureButton" parent="."]
-margin_left = 90.0
-margin_top = 10.0
-margin_right = 138.0
-margin_bottom = 58.0
+margin_left = 100.0
+margin_top = 20.0
+margin_right = 148.0
+margin_bottom = 68.0
 texture_normal = ExtResource( 11 )
 expand = true
 flip_h = true
@@ -142,10 +142,10 @@ __meta__ = {
 }
 
 [node name="PauseButton" type="TextureButton" parent="."]
-margin_left = 20.0
-margin_top = 10.0
-margin_right = 68.0
-margin_bottom = 58.0
+margin_left = 30.0
+margin_top = 20.0
+margin_right = 78.0
+margin_bottom = 68.0
 texture_normal = ExtResource( 8 )
 expand = true
 script = ExtResource( 13 )
