@@ -164,24 +164,26 @@ __meta__ = {
 }
 
 [node name="LeftButton" type="TouchScreenButton" parent="CanvasLayer/Control"]
-position = Vector2( 60, -120 )
+position = Vector2( 160, -200 )
 normal = ExtResource( 9 )
 action = "move_left"
+visibility_mode = 1
 script = ExtResource( 14 )
 
 [node name="Control2" type="Control" parent="CanvasLayer"]
 anchor_top = 1.0
 anchor_bottom = 1.0
-margin_left = 200.0
-margin_right = 200.0
+margin_left = 300.0
+margin_right = 300.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="RightButton" type="TouchScreenButton" parent="CanvasLayer/Control2"]
-position = Vector2( 0, -120 )
+position = Vector2( 0, -200 )
 normal = ExtResource( 10 )
 action = "move_right"
+visibility_mode = 1
 script = ExtResource( 14 )
 
 [node name="VBoxContainer" type="Control" parent="CanvasLayer"]
@@ -191,9 +193,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 
 [node name="UpButton" type="TouchScreenButton" parent="CanvasLayer/VBoxContainer"]
-position = Vector2( -140, -120 )
+position = Vector2( -220, -200 )
 normal = ExtResource( 7 )
 action = "jump"
+visibility_mode = 1
 script = ExtResource( 14 )
 
 [connection signal="pressed" from="FullScreenButton" to="FullScreenButton" method="_on_Button_pressed"]
