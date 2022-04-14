@@ -10,7 +10,14 @@ func _ready() -> void:
         queue_free()
     else:
         save_game.open("user://savegame.save", File.READ)
-        save_data = parse_json(save_game.get_as_text())
+        var save_file_string: String = save_game.get_as_text()
+        var parsed_save_string = parse_json(save_file_string)
+        if typeof(parsed_save_string) == TYPE_DICTIONARY:
+            save_data = parsed_save_string
+        else:
+            # Delete save file if invalid
+            var dir = Directory.new()
+            dir.remove("user://savegame.save")
 
 
 func _on_button_up() -> void:

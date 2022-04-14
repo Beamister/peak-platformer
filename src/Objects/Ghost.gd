@@ -4,5 +4,5 @@ onready var animation_player = $AnimationPlayer
 
 
 func _on_PlayerDetector_body_entered(body: Node) -> void:
-    PlayerData.ghosts_freed += 1
+    PlayerData.free_ghost()
     animation_player.play("freed")

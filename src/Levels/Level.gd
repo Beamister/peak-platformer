@@ -18,7 +18,7 @@ func save_game() -> void:
         "level": get_tree().current_scene.filename,
         "score": PlayerData.score,
         "deaths": PlayerData.deaths,
-        "ghosts_freed": PlayerData.ghosts_freed
+        "ghosts_freed": PlayerData.total_ghosts_freed
        }
     save_game.store_line(to_json(save_data))
     save_game.close()
