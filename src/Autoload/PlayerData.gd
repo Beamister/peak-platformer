@@ -7,7 +7,6 @@ var score: = 0 setget set_score
 var level_score: = 0
 var deaths: = 0 setget set_deaths
 var ghosts_freed: int = 0
-var total_ghosts: int = 0
 
 func set_score(value: int) -> void:
     score = value
@@ -24,7 +23,14 @@ func reset_game() -> void:
     score = 0
     deaths = 0
     ghosts_freed = 0
-    total_ghosts = 0
+    emit_signal("score_updated")
+
+
+func set_game_state(score_value: int, deaths_value: int, ghosts_freed_value: int) -> void:
+    level_score = 0
+    score = score_value
+    deaths = deaths_value
+    ghosts_freed = ghosts_freed_value
     emit_signal("score_updated")
 
 

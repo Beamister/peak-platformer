@@ -37,7 +37,7 @@ text = "Congratulations, you completed the game!
 
 Score: %s
 Deaths: %s
-Ghosts Freed %s/%s"
+Ghosts Freed %s/3"
 align = 1
 __meta__ = {
 "_edit_use_anchors_": false
@@ -59,10 +59,18 @@ __meta__ = {
 
 [node name="PlayButton" parent="VBoxContainer" instance=ExtResource( 2 )]
 margin_right = 288.0
-margin_bottom = 71.0
+margin_bottom = 44.0
+text = "Play Again"
+
+[node name="PlayButton2" parent="VBoxContainer" instance=ExtResource( 2 )]
+margin_top = 54.0
+margin_right = 288.0
+margin_bottom = 98.0
+text = "Main Menu"
+next_scene_path = "res://src/UserInterface/MainMenu.tscn"
 
 [node name="QuitButton" parent="VBoxContainer" instance=ExtResource( 3 )]
-margin_top = 81.0
+margin_top = 108.0
 margin_right = 288.0
 margin_bottom = 152.0
 
