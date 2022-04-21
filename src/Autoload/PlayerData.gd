@@ -51,4 +51,5 @@ func start_new_level() -> void:
 func reset_level() -> void:
     score = level_score
     total_ghosts_freed -= level_ghosts_freed
+    level_ghosts_freed = 0
     emit_signal("score_updated")
