@@ -130,4 +130,4 @@ position = Vector2( 3890, 800 )
 position = Vector2( 2640, 790 )
 
 [node name="ChaserEnemy" parent="." instance=ExtResource( 14 )]
-position = Vector2( 3710, 240 )
+position = Vector2( 4210, 440 )

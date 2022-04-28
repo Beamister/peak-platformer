@@ -1,20 +1,23 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=12 format=2]
 
 [ext_resource path="res://assets/Peak Background.png" type="Texture" id=1]
 [ext_resource path="res://src/UserInterface/QuitButton.tscn" type="PackedScene" id=2]
-[ext_resource path="res://src/UserInterface/PlayButton.tscn" type="PackedScene" id=3]
+[ext_resource path="res://src/UserInterface/LoadSceneButton.tscn" type="PackedScene" id=3]
 [ext_resource path="res://assets/ui_theme.tres" type="Theme" id=4]
 [ext_resource path="res://title_font.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/audio/The-Beginning-w-Caturday.mp3" type="AudioStream" id=6]
 [ext_resource path="res://src/UserInterface/DownloadButton.gd" type="Script" id=7]
 [ext_resource path="res://assets/Peak_logo_white.png" type="Texture" id=8]
 [ext_resource path="res://src/UserInterface/ContinueButton.tscn" type="PackedScene" id=9]
+[ext_resource path="res://src/UserInterface/MainMenu.gd" type="Script" id=10]
+[ext_resource path="res://src/UserInterface/NewGameButton.tscn" type="PackedScene" id=11]
 
 [node name="MainMenu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_scale = Vector2( 1.00257, 0.989018 )
 theme = ExtResource( 4 )
+script = ExtResource( 10 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -60,10 +63,11 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="PlayButton" parent="VBoxContainer" instance=ExtResource( 3 )]
+[node name="NewGameButton" parent="VBoxContainer" instance=ExtResource( 11 )]
 margin_right = 284.0
 margin_bottom = 49.0
-text = "New Game"
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="ContinueButton" parent="VBoxContainer" instance=ExtResource( 9 )]
 
