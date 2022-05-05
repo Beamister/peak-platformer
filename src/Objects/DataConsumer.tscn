@@ -18,6 +18,20 @@ script = ExtResource( 2 )
 position = Vector2( 0, -40 )
 texture = ExtResource( 1 )
 
+[node name="ColourIndicator" type="ColorRect" parent="DataConsumer"]
+visible = false
+anchor_left = 0.25
+anchor_top = 0.25
+anchor_right = 0.75
+anchor_bottom = 0.75
+margin_left = -40.0
+margin_top = -40.0
+margin_right = -40.0
+margin_bottom = -40.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2( 0, -40 )
 shape = SubResource( 1 )

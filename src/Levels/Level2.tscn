@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/Levels/Level3.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Objects/Switch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/Levels/Level.gd" type="Script" id=10]
 [ext_resource path="res://src/Objects/DataSpawner.tscn" type="PackedScene" id=11]
@@ -43,17 +42,11 @@ tile_data = PoolIntArray( -720829, 0, 0, -720828, 0, 0, -720827, 0, 0, -720826, 
 
 [node name="Portal" parent="." instance=ExtResource( 6 )]
 position = Vector2( 5600, 710 )
-next_scene = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 480.679, 783.043 )
 
 [node name="Controllers" type="Node" parent="."]
-
-[node name="DataConsumer" parent="Controllers" instance=ExtResource( 12 )]
-position = Vector2( 2200, 400 )
-circuit_id = 2
-bottom_input = true
 
 [node name="DataConsumer2" parent="Controllers" instance=ExtResource( 12 )]
 position = Vector2( 2280, 880 )
@@ -84,12 +77,12 @@ door_switch_id = 1
 position = Vector2( 5400, 720 )
 
 [node name="DataSpawner" parent="." instance=ExtResource( 11 )]
-position = Vector2( 2240, 360 )
-rotation = 1.5708
+position = Vector2( 2280, 400 )
+data_direction = 1
 
 [node name="DataSpawner2" parent="." instance=ExtResource( 11 )]
-position = Vector2( 2240, 840 )
-rotation = -1.5708
+position = Vector2( 2200, 880 )
+data_direction = 0
 
 [node name="DataSpawner3" parent="." instance=ExtResource( 11 )]
 position = Vector2( 4920, 800 )

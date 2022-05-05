@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=2]
@@ -6,11 +6,14 @@
 [ext_resource path="res://src/Levels/Level.gd" type="Script" id=4]
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/Levels/Level2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=8]
 
 [node name="LevelTemplate" type="Node2D" groups=["Levels"]]
 script = ExtResource( 4 )
+
+[node name="UserInterfaceLayer" type="CanvasLayer" parent="."]
+
+[node name="UserInterface" parent="UserInterfaceLayer" instance=ExtResource( 8 )]
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -100
@@ -41,9 +44,6 @@ position = Vector2( 429.16, 783.739 )
 
 [node name="Portal" parent="." instance=ExtResource( 6 )]
 position = Vector2( 3372.09, 713.186 )
-next_scene = ExtResource( 7 )
-
-[node name="UserInterface" parent="." instance=ExtResource( 8 )]
 
 [node name="Controllers" type="Node" parent="."]
 

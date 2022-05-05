@@ -6,6 +6,7 @@ var open: bool = false
 onready var toggle_controller = $ToggleController
 onready var corrupted_data_timer: Timer = $CorruptedDataTimer
 onready var sprite: Sprite = $DataConsumer
+onready var color_indicator = $DataConsumer/ColourIndicator
 
 export var corrupted: bool = false
 export var circuit_id: int = 0
@@ -17,6 +18,7 @@ export var top_input: bool = false
 export var bottom_input: bool = false
 export var left_input: bool = false
 export var right_input: bool = false
+export(Enums.DATA_COLORS) var target_color = Enums.DATA_COLORS.BLACK
 
 # Set which sides are still awaiting input
 var top_signal: bool = not top_input
@@ -27,6 +29,25 @@ var right_signal: bool = not right_signal
 
 func _ready() -> void:
     toggle_controller.circuit_id = circuit_id
+    update_color_indicator()
+
+
+func update_color_indicator():
+    match target_color:
+        Enums.DATA_COLORS.BLACK:
+            color_indicator.visible = false
+        Enums.DATA_COLORS.RED:
+            color_indicator.color = Constants.RED
+            color_indicator.visible = true
+        Enums.DATA_COLORS.BLUE:
+            color_indicator.color = Constants.BLUE
+            color_indicator.visible = true
+        Enums.DATA_COLORS.YELLOW:
+            color_indicator.color = Constants.YELLOW
+            color_indicator.visible = true
+        Enums.DATA_COLORS.RED:
+            color_indicator.color = Constants.RED
+            color_indicator.visible = true
 
 
 func get_input_data_side(data: Data) -> String:
@@ -44,6 +65,7 @@ func get_input_data_side(data: Data) -> String:
 
 func open_if_ready():
     if not open and not corrupted and top_signal and bottom_signal and left_signal and right_signal:
+        print("Open")
         toggle_controller.set_state(true)
         open = true
 
@@ -52,7 +74,7 @@ func consume_data(data: Data) -> void:
     if data.corrupted:
         corrupted = true
         corrupted_data_timer.start(wait_time)
-    else:
+    elif data.get_data_color() == target_color:
         var side = get_input_data_side(data)
         match side:
             'top':
@@ -63,7 +85,7 @@ func consume_data(data: Data) -> void:
                 left_signal = true
             'right':
                 right_signal = true
-    open_if_ready()
+        open_if_ready()
 
 
 func _on_CorruptedDataTimer_timeout() -> void:

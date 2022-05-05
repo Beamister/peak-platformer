@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=2]
@@ -7,7 +7,6 @@
 [ext_resource path="res://src/Objects/Ghost.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=7]
-[ext_resource path="res://src/UserInterface/EndScreen.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Objects/Switch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/Levels/Level.gd" type="Script" id=10]
 [ext_resource path="res://src/Objects/DataSpawner.tscn" type="PackedScene" id=11]
@@ -43,7 +42,6 @@ tile_data = PoolIntArray( -458711, 0, 0, -458710, 0, 0, -458709, 0, 0, -458708, 
 
 [node name="Portal" parent="." instance=ExtResource( 6 )]
 position = Vector2( 4880, 710 )
-next_scene = ExtResource( 8 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 480.679, 783.043 )

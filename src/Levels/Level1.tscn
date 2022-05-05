@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=2]
@@ -6,7 +6,6 @@
 [ext_resource path="res://src/Actors/Dock.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/Levels/Level2.tscn" type="PackedScene" id=7]
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Objects/Switch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/Objects/Door.tscn" type="PackedScene" id=10]
@@ -50,7 +49,6 @@ position = Vector2( 762.516, 625.813 )
 
 [node name="Portal" parent="." instance=ExtResource( 6 )]
 position = Vector2( 5440, 540 )
-next_scene = ExtResource( 7 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 position = Vector2( 240, 800 )
