@@ -2,12 +2,14 @@ extends Node
 
 signal player_died
 signal score_updated
+signal query_pieces_updated
 
 var score: int = 0 setget set_score
 var level_score: = 0
 var deaths: int = 0 setget set_deaths
 var total_ghosts_freed: int = 0
 var level_ghosts_freed: int = 0
+var query_pieces: int = 0 setget set_query_pieces
 
 var current_level_index: int = 0
 var game_data: GameData
@@ -22,6 +24,11 @@ func set_score(value: int) -> void:
 func set_deaths(value: int) -> void:
     deaths = value
     emit_signal("player_died")
+
+
+func set_query_pieces(value: int) -> void:
+    query_pieces = value
+    emit_signal("query_pieces_updated")
 
 
 func reset_game() -> void:

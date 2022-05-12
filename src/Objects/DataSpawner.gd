@@ -7,6 +7,7 @@ export(Enums.DATA_COLORS) var data_color = Enums.DATA_COLORS.BLACK
 export var has_hidden_color: bool = false
 export(Enums.DATA_COLORS) var hidden_color = Enums.DATA_COLORS.BLACK
 export(Enums.DIRECTIONS) var data_direction = Enums.DIRECTIONS.RIGHT
+export var required_query_pieces: int = 0
 
 onready var timer: Timer = $SpawnTimer
 onready var up_spawn_point: Node2D = $UpSpawnPoint
@@ -53,3 +54,9 @@ func _on_SpawnTimer_timeout() -> void:
 
 func set_data_color(new_data_color: int):
     data_color = new_data_color
+
+
+func _on_PlayerDetector_body_entered(body: Node) -> void:
+    if has_hidden_color and body.name == "Player" and PlayerData.query_pieces >= required_query_pieces:
+        PlayerData.query_pieces -= required_query_pieces
+        set_data_color(hidden_color)

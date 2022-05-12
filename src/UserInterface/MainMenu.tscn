@@ -66,8 +66,6 @@ __meta__ = {
 [node name="NewGameButton" parent="VBoxContainer" instance=ExtResource( 11 )]
 margin_right = 284.0
 margin_bottom = 49.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="ContinueButton" parent="VBoxContainer" instance=ExtResource( 9 )]
 

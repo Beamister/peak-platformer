@@ -1,15 +1,16 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://src/Objects/Door.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/Levels/Level.gd" type="Script" id=4]
+[ext_resource path="res://src/Actors/SlackEnemy.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=6]
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Objects/DataSpawner.tscn" type="PackedScene" id=11]
 [ext_resource path="res://src/Objects/DataConsumer.tscn" type="PackedScene" id=12]
 
-[node name="LevelTemplate" type="Node2D" groups=["Levels"]]
+[node name="Level4" type="Node2D" groups=["Levels"]]
 script = ExtResource( 4 )
 
 [node name="UserInterfaceLayer" type="CanvasLayer" parent="."]
@@ -58,3 +59,8 @@ door_switch_id = 1
 position = Vector2( 1480, 880 )
 has_hidden_color = true
 hidden_color = 2
+
+[node name="SlackEnemy" parent="." instance=ExtResource( 5 )]
+position = Vector2( 1080, 700 )
+starting_x_velocity = 100.0
+starting_y_velocity = -1000.0
