@@ -5,14 +5,48 @@ export var stomp_impulse: = 600.0
 export var max_y_head_movement: float = 15
 export var max_x_head_movement: float = 5
 export var head_movement_factor: float = 10
+export var zoom_speed: float = 2
 
 onready var jump_audio_player: AudioStreamPlayer = $JumpAudioStreamPlayer
 onready var death_audio_player: AudioStreamPlayer = $DeathAudioStreamPlayer
 onready var power_up_timer: Timer = $PowerUpTimer
 onready var head: CollisionShape2D = $HeadCollisionShape
+onready var query_label: Label = $QueryLabel
+onready var camera: Camera2D = $Camera2D
+
 onready var base_speed: Vector2 = speed
 
 onready var base_head_position: Vector2 = head.position
+
+var query_text_segments: PoolStringArray = []
+var target_zoom: float = 1.0
+
+func _ready() -> void:
+    Events.connect("query_piece_acquired", self, "_on_query_piece_acquired")
+    Events.connect("query_pieces_cleared", self, "_on_query_pieces_cleared")
+    Events.connect("update_camera_zoom", self, "_on_update_camera_zoom")
+    Events.connect("reset_camera", self, "_on_reset_camera")
+
+
+func _on_update_camera_zoom(new_zoom_scale: float) -> void:
+    target_zoom = new_zoom_scale
+
+
+func _on_reset_camera() -> void:
+    target_zoom = 1.0
+
+
+func _on_query_piece_acquired(query_text, query_text_index) -> void:
+    while query_text_segments.size() - 1 < query_text_index:
+        query_text_segments.append("")
+    query_text_segments[query_text_index] = query_text
+    query_label.text = query_text_segments.join(" ")
+
+
+func _on_query_pieces_cleared() -> void:
+    query_label.text = ""
+    query_text_segments = []
+
 
 func _on_EnemyDetector_area_entered(area: Area2D) -> void:
     _velocity = calculate_stomp_velocity(_velocity, stomp_impulse)
@@ -31,6 +65,11 @@ func _physics_process(delta: float) -> void:
         interupt_jump()
     move()
     update_head_position()
+    update_camera(delta)
+
+
+func update_camera(delta: float) -> void:
+    camera.zoom = lerp(camera.zoom, target_zoom * Vector2.ONE, 1 * delta * zoom_speed)
 
 
 func move() -> void:

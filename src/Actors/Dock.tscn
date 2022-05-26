@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=2]
 
-[ext_resource path="res://assets/dock_body.png" type="Texture" id=1]
-[ext_resource path="res://assets/dock_head.png" type="Texture" id=2]
+[ext_resource path="res://assets/images/dock_body.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/dock_head.png" type="Texture" id=2]
 [ext_resource path="res://src/Actors/Dock.gd" type="Script" id=3]
-[ext_resource path="res://assets/NHaasGroteskDSPro-75Bd.otf" type="DynamicFontData" id=4]
+[ext_resource path="res://assets/fonts/NHaasGroteskDSPro-75Bd.otf" type="DynamicFontData" id=4]
 
 [sub_resource type="Animation" id=2]
 resource_name = "idle"

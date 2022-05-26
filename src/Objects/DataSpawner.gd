@@ -57,6 +57,6 @@ func set_data_color(new_data_color: int):
 
 
 func _on_PlayerDetector_body_entered(body: Node) -> void:
-    if has_hidden_color and body.name == "Player" and PlayerData.query_pieces >= required_query_pieces:
-        PlayerData.query_pieces -= required_query_pieces
+    if has_hidden_color and body.name == "Player" and PlayerData.query_pieces == required_query_pieces:
+        Events.emit_signal("query_pieces_cleared")
         set_data_color(hidden_color)

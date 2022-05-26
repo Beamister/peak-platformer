@@ -2,18 +2,30 @@ extends Node
 
 signal player_died
 signal score_updated
-signal query_pieces_updated
 
 var score: int = 0 setget set_score
 var level_score: = 0
 var deaths: int = 0 setget set_deaths
 var total_ghosts_freed: int = 0
 var level_ghosts_freed: int = 0
-var query_pieces: int = 0 setget set_query_pieces
+var query_pieces: int = 0
 
 var current_level_index: int = 0
 var game_data: GameData
 var level_map: LevelMap
+
+
+func _ready() -> void:
+    Events.connect("query_piece_acquired", self, "_on_query_piece_acquired")
+    Events.connect("query_pieces_cleared", self, "_on_query_pieces_cleared")
+
+
+func _on_query_piece_acquired(query_text, query_index) -> void:
+    query_pieces += 1
+
+
+func _on_query_pieces_cleared() -> void:
+    query_pieces = 0
 
 
 func set_score(value: int) -> void:
@@ -24,11 +36,6 @@ func set_score(value: int) -> void:
 func set_deaths(value: int) -> void:
     deaths = value
     emit_signal("player_died")
-
-
-func set_query_pieces(value: int) -> void:
-    query_pieces = value
-    emit_signal("query_pieces_updated")
 
 
 func reset_game() -> void:
@@ -65,11 +72,13 @@ func save_game_state_to_profile(player_profile: PlayerProfile) -> void:
 
 
 func start_new_level() -> void:
+    Events.emit_signal("query_pieces_cleared")
     level_score = score
     level_ghosts_freed = 0 
 
 
 func reset_level() -> void:
+    Events.emit_signal("query_pieces_cleared")
     score = level_score
     total_ghosts_freed -= level_ghosts_freed
     level_ghosts_freed = 0

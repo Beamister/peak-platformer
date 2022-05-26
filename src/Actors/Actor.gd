@@ -13,4 +13,7 @@ var _angular_velocity: float = 0
 
 func _physics_process(delta: float) -> void:
     _velocity.y += gravity * delta
-    rotation += _angular_velocity
+    if _angular_velocity > 0:
+        rotate(_angular_velocity * delta)
+    else:
+        rotation_degrees = round(rotation_degrees)

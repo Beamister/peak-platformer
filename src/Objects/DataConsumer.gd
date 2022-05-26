@@ -45,8 +45,8 @@ func update_color_indicator():
         Enums.DATA_COLORS.YELLOW:
             color_indicator.color = Constants.YELLOW
             color_indicator.visible = true
-        Enums.DATA_COLORS.RED:
-            color_indicator.color = Constants.RED
+        Enums.DATA_COLORS.GREEN:
+            color_indicator.color = Constants.GREEN
             color_indicator.visible = true
 
 
@@ -65,7 +65,6 @@ func get_input_data_side(data: Data) -> String:
 
 func open_if_ready():
     if not open and not corrupted and top_signal and bottom_signal and left_signal and right_signal:
-        print("Open")
         toggle_controller.set_state(true)
         open = true
 

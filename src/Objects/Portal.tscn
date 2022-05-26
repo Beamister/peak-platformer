@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=2]
 
-[ext_resource path="res://assets/portal.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/portal.png" type="Texture" id=1]
 [ext_resource path="res://src/Objects/Portal.gd" type="Script" id=2]
 [ext_resource path="res://assets/audio/elevator-madness-w-caturday-scloudtomp3downloader.com_.mp3" type="AudioStream" id=3]
 

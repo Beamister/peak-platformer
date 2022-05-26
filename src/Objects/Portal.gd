@@ -16,7 +16,6 @@ func _on_body_entered(body: PhysicsBody2D):
 func teleport() -> void:
     anim_player.play("fade_out")
     yield(anim_player, "animation_finished")
-    print(PlayerData.has_next_level())
     if PlayerData.has_next_level():
         PlayerData.start_new_level()
         PlayerData.load_next_level()
