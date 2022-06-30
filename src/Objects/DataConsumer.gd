@@ -32,7 +32,7 @@ func _ready() -> void:
     update_color_indicator()
 
 
-func update_color_indicator():
+func update_color_indicator() -> void:
     match target_color:
         Enums.DATA_COLORS.BLACK:
             color_indicator.visible = false
@@ -63,7 +63,7 @@ func get_input_data_side(data: Data) -> String:
         return 'right'
 
 
-func open_if_ready():
+func open_if_ready() -> void:
     if not open and not corrupted and top_signal and bottom_signal and left_signal and right_signal:
         toggle_controller.set_state(true)
         open = true

@@ -15,7 +15,6 @@ collision_layer = 4
 collision_mask = 0
 script = ExtResource( 2 )
 data_entity = ExtResource( 3 )
-offset_range = 30.0
 
 [node name="DataSpawner" type="Sprite" parent="."]
 position = Vector2( 0, -40 )
