@@ -63,11 +63,6 @@ position = Vector2( 2320, -400 )
 circuit_id = 3
 target_color = 3
 
-[node name="DataSpawner" parent="Controllers/DataConsumer/DataConsumer3" instance=ExtResource( 11 )]
-position = Vector2( -40, 80 )
-data_direction = 1
-circuit_id = 3
-
 [node name="Turner" parent="Controllers" instance=ExtResource( 10 )]
 position = Vector2( 2760, 360 )
 button_id = 1
@@ -123,6 +118,11 @@ data_direction = 1
 position = Vector2( 4290, 0 )
 data_color = 3
 data_direction = 1
+
+[node name="DataSpawner7" parent="." instance=ExtResource( 11 )]
+position = Vector2( 4240, 560 )
+data_direction = 1
+circuit_id = 3
 
 [node name="Coin" parent="." instance=ExtResource( 9 )]
 position = Vector2( 1120, 790 )

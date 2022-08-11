@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://assets/tileset.tres" type="TileSet" id=1]
 [ext_resource path="res://src/Actors/Player.tscn" type="PackedScene" id=2]
@@ -6,6 +6,7 @@
 [ext_resource path="res://src/Actors/Dock.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/Objects/Coin.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/Objects/Portal.tscn" type="PackedScene" id=6]
+[ext_resource path="res://assets/images/Peak desktop background2.png" type="Texture" id=7]
 [ext_resource path="res://src/UserInterface/UserInterface.tscn" type="PackedScene" id=8]
 [ext_resource path="res://src/Objects/Switch.tscn" type="PackedScene" id=9]
 [ext_resource path="res://src/Objects/Door.tscn" type="PackedScene" id=10]
@@ -23,15 +24,14 @@ process_priority = 100
 
 [node name="UserInterface" parent="UserInterfaceLayer" instance=ExtResource( 8 )]
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -100
+[node name="CanvasLayer" type="ParallaxBackground" parent="."]
 
-[node name="Background" type="ColorRect" parent="CanvasLayer"]
-anchor_right = 1.0
-anchor_bottom = 1.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
+[node name="ParallaxLayer" type="ParallaxLayer" parent="CanvasLayer"]
+motion_scale = Vector2( 0.1, 1 )
+
+[node name="Sprite" type="Sprite" parent="CanvasLayer/ParallaxLayer"]
+position = Vector2( 5300, -630 )
+texture = ExtResource( 7 )
 
 [node name="TileMap" type="TileMap" parent="."]
 z_index = -10

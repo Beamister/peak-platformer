@@ -1,0 +1,161 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/images/data_spawner.png" type="Texture" id=1]
+
+[sub_resource type="GDScript" id=3]
+script/source = "extends StaticBody2D
+
+enum INPUT {LEFT, RIGHT, NONE}
+
+export var data_entity: PackedScene
+export var offset_range: float = 30.0
+export(Enums.DATA_COLORS) var left_target_color = Enums.DATA_COLORS.BLACK
+export(Enums.DATA_COLORS) var right_target_color = Enums.DATA_COLORS.BLACK
+export(Enums.DATA_COLORS) var output_target_color = Enums.DATA_COLORS.BLACK
+
+onready var left_color_indicator: ColorRect = $LeftColorIndicator
+onready var right_color_indicator: ColorRect = $RightColorIndicator
+onready var left_input_area: Area2D = $LeftInputArea
+onready var right_input_area: Area2D = $RightInputArea
+onready var buffer_timer: Timer = $BufferTimer
+onready var spawn_point: Node2D = $SpawnPoint
+onready var level = get_tree().get_nodes_in_group(\"Levels\")[0]
+
+var last_input_color: int = Enums.DATA_COLORS.NONE
+var last_input_side: int = INPUT.NONE
+
+var rng = RandomNumberGenerator.new()
+
+func _ready() -> void:
+    update_color_indicators()
+
+
+func update_color_indicators() -> void:
+    match left_target_color:
+        Enums.DATA_COLORS.BLACK:
+            left_color_indicator.visible = false
+        Enums.DATA_COLORS.RED:
+            left_color_indicator.color = Constants.RED
+        Enums.DATA_COLORS.BLUE:
+            left_color_indicator.color = Constants.BLUE
+        Enums.DATA_COLORS.YELLOW:
+            left_color_indicator.color = Constants.YELLOW
+        Enums.DATA_COLORS.GREEN:
+            left_color_indicator.color = Constants.GREEN
+    match right_target_color:
+        Enums.DATA_COLORS.BLACK:
+            right_color_indicator.visible = false
+        Enums.DATA_COLORS.RED:
+            right_color_indicator.color = Constants.RED
+        Enums.DATA_COLORS.BLUE:
+            right_color_indicator.color = Constants.BLUE
+        Enums.DATA_COLORS.YELLOW:
+            right_color_indicator.color = Constants.YELLOW
+        Enums.DATA_COLORS.GREEN:
+            right_color_indicator.color = Constants.GREEN
+
+
+func spawn_data() -> void:
+    var direction: Vector2 = Vector2.DOWN.rotated(rotation)
+    var offset_value: float = rng.randf_range(-offset_range, offset_range)
+    var offset_vector: Vector2 = (Vector2.RIGHT * offset_value).rotated(rotation)
+    level.spawn_entity(data_entity, spawn_point.global_position + offset_vector, direction)
+
+
+func consume_data(data: Data) -> void:
+    var input_side: int = INPUT.NONE
+    # Check if consumed data overlaps with left or right input areas
+    var space_state: Physics2DDirectSpaceState = get_world_2d().direct_space_state
+    if data in left_input_area.get_overlapping_areas():
+        input_side = INPUT.LEFT
+    if data in right_input_area.get_overlapping_areas():
+        input_side = INPUT.RIGHT
+    if input_side != INPUT.NONE:
+        var input_color: int = data.color
+        # If input was the first or on the same side as previous
+        if input_side == last_input_side or last_input_side == INPUT.NONE:
+            last_input_color = input_color
+            last_input_side = input_side
+            buffer_timer.start()
+        # If input was on different side to last
+        else:
+            # Check if the current and last inputs match their targets
+            var last_input_target_color = left_target_color if last_input_side == INPUT.LEFT else right_target_color
+            var input_target_color = left_target_color if last_input_side == INPUT.LEFT else right_target_color
+            if last_input_color == last_input_target_color and input_color == input_target_color:
+                spawn_data()
+                last_input_color = Enums.DATA_COLORS.NONE
+                last_input_side = INPUT.NONE
+            else:
+                last_input_color = input_color
+                last_input_side = input_side
+
+
+# Reset last inputs to none when timer runs out
+func _on_BufferTimer_timeout() -> void:
+    last_input_color = Enums.DATA_COLORS.NONE
+    last_input_side = INPUT.NONE
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 80, 40 )
+
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 38, 10 )
+
+[node name="DataCombiner" type="StaticBody2D"]
+collision_layer = 4
+collision_mask = 31
+script = SubResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 2, 1 )
+texture = ExtResource( 1 )
+
+[node name="SpawnPoint" type="Node2D" parent="."]
+position = Vector2( 0, 40 )
+
+[node name="LeftColorIndicator" type="ColorRect" parent="."]
+margin_left = -60.0
+margin_top = -20.0
+margin_right = -20.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RightColorIndicator" type="ColorRect" parent="."]
+margin_left = 20.0
+margin_top = -20.0
+margin_right = 60.0
+margin_bottom = 20.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BufferTimer" type="Timer" parent="."]
+
+[node name="LeftInputArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftInputArea"]
+position = Vector2( -40, -40 )
+shape = SubResource( 2 )
+
+[node name="RightInputArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightInputArea"]
+position = Vector2( 40, -40 )
+shape = SubResource( 2 )
+
+[connection signal="timeout" from="BufferTimer" to="." method="_on_BufferTimer_timeout"]
