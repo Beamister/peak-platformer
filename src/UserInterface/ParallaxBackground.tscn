@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/images/scenery/background/skill-desc_0003_bg.png" type="Texture" id=1]
+[ext_resource path="res://assets/images/scenery/background/skill-desc_0001_buildings.png" type="Texture" id=2]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayerBackground" type="ParallaxLayer" parent="."]
+scale = Vector2( 10, 10 )
+motion_mirroring = Vector2( 272, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayerBackground"]
+texture = ExtResource( 1 )
+centered = false
+
+[node name="ParallaxLayerBuildings" type="ParallaxLayer" parent="."]
+scale = Vector2( 10, 10 )
+motion_scale = Vector2( 0.2, 0 )
+motion_mirroring = Vector2( 272, 0 )
+
+[node name="Sprite" type="Sprite" parent="ParallaxLayerBuildings"]
+texture = ExtResource( 2 )
+centered = false
